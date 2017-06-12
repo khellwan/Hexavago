@@ -110,5 +110,10 @@ namespace WindowsFormsApp1
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

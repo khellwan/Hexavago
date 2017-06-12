@@ -234,6 +234,7 @@
             this.textNome.Name = "textNome";
             this.textNome.Size = new System.Drawing.Size(273, 20);
             this.textNome.TabIndex = 24;
+            this.textNome.TextChanged += new System.EventHandler(this.textNome_TextChanged);
             // 
             // label7
             // 
