@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -28,12 +29,16 @@ namespace WindowsFormsApp1
             else if (textCargo.Text == "")
                 MessageBox.Show("Insira um cargo para o funcionário a ser cadastrado. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            else if (textSenha.Text == "")
+            else if (textLogin.Text == "")
                 MessageBox.Show("Insira uma senha para o funcionário a ser cadastrado. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else
             {
-                Funcionario f1 = new Funcionario(textNome.Text, textCPF.Text, textSenha.Text);
+                Funcionario f1 = new Funcionario(textNome.Text, textCPF.Text, textLogin.Text);
+                BancoDados.setCPF(textCPF.Text, "funcionario");
+                BancoDados.setNome(textNome.Text, "funcionario");
+                BancoDados.setLogin(textLogin.Text, "funcionario");
+                BancoDados.setSenha(textSenha.Text, "funcionario");
 
                 MessageBox.Show("Funcionario cadastrado com sucesso. ", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -42,6 +47,11 @@ namespace WindowsFormsApp1
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -20,13 +20,17 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             if (textLogin.Text == "")
-                MessageBox.Show("CPF inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Login inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (textSenha.Text == "")
                 MessageBox.Show("Senha inválida. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"))
             {
                 ServicosCamarista cf = new ServicosCamarista();
                 cf.Show();
+            }
+            else
+            {
+                MessageBox.Show("Login inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

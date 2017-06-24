@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("CPF inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (textSenha.Text == "")
                 MessageBox.Show("Senha inválida. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "hospede"))
             {
                 ServicosCliente cf = new ServicosCliente();
                 cf.Show();
