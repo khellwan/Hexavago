@@ -68,6 +68,105 @@ namespace WindowsFormsApp1
         public void erase()
         {
         }
+        public static void criaReserva(string id_reserva, string data_entrada, string data_saida, int n_pessoas)
+        {
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "laudebankolino.database.windows.net";
+                builder.UserID = "thico10";
+                builder.Password = "LuThiWill9264";
+                builder.InitialCatalog = "laudebanks";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("INSERT INTO @reserva ([id_reserva], [data_entrada], [data_saida], [n_pessoas]) ");
+                    sb.Append("VALUES (@nome, @cpf, @login, @senha);");
+                    String sql = sb.ToString();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@id_reserva", id_reserva);
+                        command.Parameters.AddWithValue("@data_entrada", data_entrada);
+                        command.Parameters.AddWithValue("@data_saida", data_saida);
+                        command.Parameters.AddWithValue("@n_pessoas", n_pessoas);
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+        public static void criaHospede(string id_reserva, string nome, string cpf, int idade, string email)
+        {
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "laudebankolino.database.windows.net";
+                builder.UserID = "thico10";
+                builder.Password = "LuThiWill9264";
+                builder.InitialCatalog = "laudebanks";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append("INSERT INTO hospede ([id_reserva], [nome], [cpf], [idade], [email]) ");
+                    sb.Append("VALUES (@id_reserva, @nome, @cpf, @idade, @email);");
+                    String sql = sb.ToString();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@nome", nome);
+                        command.Parameters.AddWithValue("@cpf", cpf);
+                        command.Parameters.AddWithValue("@idade", idade);
+                        command.Parameters.AddWithValue("@email", email);
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
+        public static void criaFuncionario(string nome, string cpf, string login, string senha, string cargo)
+        {
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "laudebankolino.database.windows.net";
+                builder.UserID = "thico10";
+                builder.Password = "LuThiWill9264";
+                builder.InitialCatalog = "laudebanks";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append("INSERT INTO @cargo ([nome], [cpf], [login], [senha]) ");
+                    sb.Append("VALUES (@nome, @cpf, @login, @senha);");
+                    String sql = sb.ToString();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@cargo", cargo);
+                        command.Parameters.AddWithValue("@nome", nome);
+                        command.Parameters.AddWithValue("@cpf", cpf);
+                        command.Parameters.AddWithValue("@login", login);
+                        command.Parameters.AddWithValue("@senha", senha);
+                        int rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+        }
         public static void setCPF(string cpf, string tabela)
         {
             try
@@ -245,19 +344,31 @@ namespace WindowsFormsApp1
                 {
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
+                    String sql;
                     if (tabela == "hospede")
                     {
                         sb.Append("SELECT login");
                         sb.Append("FROM [Hospede]");
                         sb.Append("WHERE login == @login;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@login", login);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
                     else
                     {
                         sb.Append("SELECT login");
                         sb.Append("FROM [funcionario]");
                         sb.Append("WHERE login == @login;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@login", login);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
-                    String sql = sb.ToString();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -287,19 +398,31 @@ namespace WindowsFormsApp1
                 {
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
+                    String sql;
                     if (tabela == "hospede")
                     {
                         sb.Append("SELECT senha");
                         sb.Append("FROM [Hospede]");
                         sb.Append("WHERE senha == @senha;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@senha", senha);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
                     else
                     {
                         sb.Append("SELECT senha");
                         sb.Append("FROM [funcionario]");
                         sb.Append("WHERE senha == @senha;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@senha", senha);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
-                    String sql = sb.ToString();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -329,19 +452,31 @@ namespace WindowsFormsApp1
                 {
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
+                    String sql;
                     if (tabela == "hospede")
                     {
                         sb.Append("SELECT cpf");
                         sb.Append("FROM [Hospede]");
-                        sb.Append("WHERE cpf == @cpf;");
+                        sb.Append("WHERE cpf = @cpf;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@cpf", cpf);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
                     else
                     {
                         sb.Append("SELECT cpf");
                         sb.Append("FROM [funcionario]");
-                        sb.Append("WHERE cpf == @cpf;");
+                        sb.Append("WHERE cpf = @cpf;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            command.Parameters.AddWithValue("@cpf", cpf);
+                            int rowsAffected = command.ExecuteNonQuery();
+                        }
                     }
-                    String sql = sb.ToString();
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -357,7 +492,7 @@ namespace WindowsFormsApp1
                 return "DeuRuimNoSantander";
             }
         }
-        public static bool efetuarLogin(string login, string senha, string tabela)
+        public static string efetuarLogin(string login, string senha, string tabela)
         {
             try
             {
@@ -371,27 +506,45 @@ namespace WindowsFormsApp1
                 {
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
+                    String sql;
                     if (tabela == "hospede")
                     {
                         sb.Append("SELECT login");
                         sb.Append("FROM [Hospede]");
-                        sb.Append("WHERE login == @login AND senha == @senha");
+                        sb.Append("WHERE login = @login AND senha = @senha");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
+                        {
+                            SqlParameter param = new SqlParameter();
+                            param.ParameterName = "@Login";
+                            param.Value = login;
+                            command.Parameters.Add(param);
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (!reader.IsDBNull(0))
+                                    return reader.GetString(0);
+                                return string.Empty;
+                            }
+                        }
                     }
                     else
                     {
-                        sb.Append("SELECT login");
-                        sb.Append("FROM [funcionario]");
-                        sb.Append("WHERE login == @login AND senha == @senha");
-                    }
-                    String sql = sb.ToString();
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        sb.Append("SELECT f.login FROM funcionario f WHERE f.login = 'admin';");
+                        //sb.Append("FROM funcionario");
+                        //sb.Append("WHERE login = @login;");
+                        sql = sb.ToString();
+                        using (SqlCommand command = new SqlCommand(sql, connection))
                         {
-                            if (string.IsNullOrEmpty(reader.GetString(0)))
-                                return false;
-                            else
-                                return true;
+                            //SqlParameter param = new SqlParameter();
+                            //param.ParameterName = "@login";
+                            //param.Value = "admin";
+                            //command.Parameters.Add(param);
+                            using (SqlDataReader reader = command.ExecuteReader())
+                            {
+                                if (!reader.IsDBNull(0))
+                                    return reader.GetString(0);
+                                return string.Empty;
+                            }
                         }
                     }
                 }
@@ -399,7 +552,36 @@ namespace WindowsFormsApp1
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
-                return false;
+                return "erro";
+            }
+        }
+        public static void deletaReserva(string cpf)
+        {
+            try
+            {
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = "laudebankolino.database.windows.net";
+                builder.UserID = "thico10";
+                builder.Password = "LuThiWill9264";
+                builder.InitialCatalog = "laudebanks";
+
+                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                {
+                    connection.Open();
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("DELETE FROM hospede WHERE cpf = @cpf;");
+                    String sql = sb.ToString();
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        command.Parameters.AddWithValue("@cpf", cpf );
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine(rowsAffected + " row(s) deleted");
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine(e.ToString());
             }
         }
     }

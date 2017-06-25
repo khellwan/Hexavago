@@ -34,12 +34,8 @@ namespace WindowsFormsApp1
 
             else
             {
-                Funcionario f1 = new Funcionario(textNome.Text, textCPF.Text, textLogin.Text);
-                BancoDados.setCPF(textCPF.Text, "funcionario");
-                BancoDados.setNome(textNome.Text, "funcionario");
-                BancoDados.setLogin(textLogin.Text, "funcionario");
-                BancoDados.setSenha(textSenha.Text, "funcionario");
-
+                //Funcionario f1 = new Funcionario(textNome.Text, textCPF.Text, textLogin.Text);
+                BancoDados.criaFuncionario(textNome.Text, textCPF.Text, textLogin.Text, textSenha.Text, textCargo.Text);
                 MessageBox.Show("Funcionario cadastrado com sucesso. ", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -50,6 +46,11 @@ namespace WindowsFormsApp1
         }
 
         private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

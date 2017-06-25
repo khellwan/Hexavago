@@ -19,25 +19,27 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("cuzin");
             if (textLogin.Text == "") { 
                 MessageBox.Show("Preencha o campo de login ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("bunda");
+                Console.WriteLine("semlogin");
             }
             else if (textSenha.Text == "")
             {
                 MessageBox.Show("Preencha o campo da senha ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("eoq");
+                Console.WriteLine("semsenha");
             }
-            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"))
+            else if (string.IsNullOrEmpty(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario")))
             {
-                Console.WriteLine("cu");
+                Console.WriteLine("login deu boa");
                 CadastrarFuncionario cf = new CadastrarFuncionario();
+                Console.WriteLine(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"));
                 cf.Show();
             }
             else
             {
+                
                 MessageBox.Show("Login inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("login invalido");
             }
             this.Close();
         }

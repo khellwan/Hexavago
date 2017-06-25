@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("CPF inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (textSenha.Text == "")
                 MessageBox.Show("Senha inválida. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"))
+            else if (string.IsNullOrEmpty(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "recepcionista")))
             {
                 ServicosRecepcionista cf = new ServicosRecepcionista();
                 cf.Show();
