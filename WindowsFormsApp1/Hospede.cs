@@ -13,7 +13,6 @@ namespace WindowsFormsApp1
         private string senha;
         private string email;
         private int ano_de_nascimento;
-
         public Hospede(string nome_completo, string cpf, string senha, string email, int ano_de_nascimento)
         {
             this.nome_completo = nome_completo;

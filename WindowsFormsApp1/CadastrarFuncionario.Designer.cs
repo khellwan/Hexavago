@@ -92,14 +92,14 @@
             this.textCargo.Location = new System.Drawing.Point(163, 105);
             this.textCargo.Name = "textCargo";
             this.textCargo.Size = new System.Drawing.Size(100, 20);
-            this.textCargo.TabIndex = 6;
+            this.textCargo.TabIndex = 2;
             // 
             // textCPF
             // 
             this.textCPF.Location = new System.Drawing.Point(163, 140);
             this.textCPF.Name = "textCPF";
             this.textCPF.Size = new System.Drawing.Size(100, 20);
-            this.textCPF.TabIndex = 7;
+            this.textCPF.TabIndex = 3;
             // 
             // textLogin
             // 
@@ -107,7 +107,7 @@
             this.textLogin.Name = "textLogin";
             this.textLogin.PasswordChar = '☺';
             this.textLogin.Size = new System.Drawing.Size(100, 20);
-            this.textLogin.TabIndex = 8;
+            this.textLogin.TabIndex = 4;
             // 
             // label4
             // 
@@ -124,7 +124,7 @@
             this.button1.Location = new System.Drawing.Point(135, 255);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 6;
             this.button1.Text = "Cadastrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -145,7 +145,8 @@
             this.textSenha.Name = "textSenha";
             this.textSenha.PasswordChar = '☺';
             this.textSenha.Size = new System.Drawing.Size(100, 20);
-            this.textSenha.TabIndex = 12;
+            this.textSenha.TabIndex = 5;
+            this.textSenha.TextChanged += new System.EventHandler(this.textSenha_TextChanged);
             // 
             // CadastrarFuncionario
             // 

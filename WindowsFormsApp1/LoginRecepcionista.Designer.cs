@@ -52,7 +52,7 @@
             this.textLogin.Location = new System.Drawing.Point(141, 108);
             this.textLogin.Name = "textLogin";
             this.textLogin.Size = new System.Drawing.Size(100, 20);
-            this.textLogin.TabIndex = 24;
+            this.textLogin.TabIndex = 1;
             this.textLogin.TextChanged += new System.EventHandler(this.textLogin_TextChanged);
             // 
             // label3
@@ -81,7 +81,7 @@
             this.textSenha.Name = "textSenha";
             this.textSenha.PasswordChar = '☺';
             this.textSenha.Size = new System.Drawing.Size(100, 20);
-            this.textSenha.TabIndex = 21;
+            this.textSenha.TabIndex = 2;
             this.textSenha.TextChanged += new System.EventHandler(this.textSenha_TextChanged);
             // 
             // button1
@@ -89,7 +89,7 @@
             this.button1.Location = new System.Drawing.Point(109, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 20;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Entrar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

@@ -38,6 +38,13 @@
             this.checkboxCheckout = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textPessoas = new System.Windows.Forms.TextBox();
+            this.textSaida = new System.Windows.Forms.TextBox();
+            this.textEntrada = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -48,13 +55,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textCPF = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textEntrada = new System.Windows.Forms.TextBox();
-            this.textSaida = new System.Windows.Forms.TextBox();
-            this.textPessoas = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -189,6 +189,69 @@
             this.groupBox1.Text = "Reservar";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter_1);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(271, 295);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Enviar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1, 253);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 13);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Nº de pessoas:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1, 227);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Data de saída:";
+            // 
+            // textPessoas
+            // 
+            this.textPessoas.Enabled = false;
+            this.textPessoas.Location = new System.Drawing.Point(94, 250);
+            this.textPessoas.Name = "textPessoas";
+            this.textPessoas.Size = new System.Drawing.Size(93, 20);
+            this.textPessoas.TabIndex = 34;
+            // 
+            // textSaida
+            // 
+            this.textSaida.Enabled = false;
+            this.textSaida.Location = new System.Drawing.Point(94, 224);
+            this.textSaida.Name = "textSaida";
+            this.textSaida.Size = new System.Drawing.Size(93, 20);
+            this.textSaida.TabIndex = 33;
+            // 
+            // textEntrada
+            // 
+            this.textEntrada.Enabled = false;
+            this.textEntrada.Location = new System.Drawing.Point(94, 198);
+            this.textEntrada.Name = "textEntrada";
+            this.textEntrada.Size = new System.Drawing.Size(93, 20);
+            this.textEntrada.TabIndex = 32;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1, 201);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Data de entrada:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -204,7 +267,7 @@
             this.textEmail.Location = new System.Drawing.Point(358, 227);
             this.textEmail.Name = "textEmail";
             this.textEmail.Size = new System.Drawing.Size(273, 20);
-            this.textEmail.TabIndex = 29;
+            this.textEmail.TabIndex = 27;
             // 
             // label10
             // 
@@ -266,7 +329,7 @@
             this.textCPF.Location = new System.Drawing.Point(358, 126);
             this.textCPF.Name = "textCPF";
             this.textCPF.Size = new System.Drawing.Size(273, 20);
-            this.textCPF.TabIndex = 22;
+            this.textCPF.TabIndex = 25;
             // 
             // groupBox2
             // 
@@ -282,69 +345,6 @@
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cancelar";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(271, 295);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Enviar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1, 201);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Data de entrada:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // textEntrada
-            // 
-            this.textEntrada.Enabled = false;
-            this.textEntrada.Location = new System.Drawing.Point(94, 198);
-            this.textEntrada.Name = "textEntrada";
-            this.textEntrada.Size = new System.Drawing.Size(93, 20);
-            this.textEntrada.TabIndex = 32;
-            // 
-            // textSaida
-            // 
-            this.textSaida.Enabled = false;
-            this.textSaida.Location = new System.Drawing.Point(94, 224);
-            this.textSaida.Name = "textSaida";
-            this.textSaida.Size = new System.Drawing.Size(93, 20);
-            this.textSaida.TabIndex = 33;
-            // 
-            // textPessoas
-            // 
-            this.textPessoas.Enabled = false;
-            this.textPessoas.Location = new System.Drawing.Point(94, 250);
-            this.textPessoas.Name = "textPessoas";
-            this.textPessoas.Size = new System.Drawing.Size(93, 20);
-            this.textPessoas.TabIndex = 34;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 227);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Data de saída:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1, 253);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 13);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Nº de pessoas:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // button2
             // 

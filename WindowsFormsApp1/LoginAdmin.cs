@@ -28,11 +28,11 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Preencha o campo da senha ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("semsenha");
             }
-            else if (string.IsNullOrEmpty(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario")))
+            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "Funcionario"))
             {
                 Console.WriteLine("login deu boa");
                 CadastrarFuncionario cf = new CadastrarFuncionario();
-                Console.WriteLine(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"));
+                //Console.WriteLine(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "funcionario"));
                 cf.Show();
             }
             else

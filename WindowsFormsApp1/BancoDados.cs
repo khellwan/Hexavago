@@ -492,7 +492,7 @@ namespace WindowsFormsApp1
                 return "DeuRuimNoSantander";
             }
         }
-        public static string efetuarLogin(string login, string senha, string tabela)
+        public static bool efetuarLogin(string login, string senha, string tabela)
         {
             try
             {
@@ -507,6 +507,7 @@ namespace WindowsFormsApp1
                     connection.Open();
                     StringBuilder sb = new StringBuilder();
                     String sql;
+                    //Não mexi no caso do hospede. Arrumar aqui
                     if (tabela == "hospede")
                     {
                         sb.Append("SELECT login");
@@ -521,29 +522,45 @@ namespace WindowsFormsApp1
                             command.Parameters.Add(param);
                             using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                if (!reader.IsDBNull(0))
-                                    return reader.GetString(0);
-                                return string.Empty;
+                                return false;
+                                //if (!reader.IsDBNull(0))
+                                //    return reader.GetString(0);
+                               // return string.Empty;
                             }
                         }
                     }
-                    else
+                    else //mexi aqui
                     {
-                        sb.Append("SELECT f.login FROM funcionario f WHERE f.login = 'admin';");
-                        //sb.Append("FROM funcionario");
-                        //sb.Append("WHERE login = @login;");
+                        sb.Append("SELECT login ");
+                        sb.Append("FROM Funcionario ");
+                        sb.Append("WHERE login = @login and senha = @senha;");
                         sql = sb.ToString();
                         using (SqlCommand command = new SqlCommand(sql, connection))
                         {
+                            command.Parameters.AddWithValue("@login", login);
+                            command.Parameters.AddWithValue("@senha", senha);
+
+
                             //SqlParameter param = new SqlParameter();
                             //param.ParameterName = "@login";
                             //param.Value = "admin";
                             //command.Parameters.Add(param);
+                            Console.WriteLine("A consulta é: ");
+                            Console.WriteLine(command.CommandText);
                             using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                if (!reader.IsDBNull(0))
-                                    return reader.GetString(0);
-                                return string.Empty;
+                                while (reader.Read())
+                                {
+                                    Console.WriteLine("{0}", reader.GetString(0));
+                                    if (!reader.IsDBNull(reader.GetOrdinal("login"))) //Isso tem q estar dentro desse while!!!!!!
+                                    {
+                                        return true;
+                                    }
+                                }
+                                //if (!reader.IsDBNull(0))
+                                //    return reader.GetString(0);
+                                //return string.Empty;
+                                return false;
                             }
                         }
                     }
@@ -552,7 +569,7 @@ namespace WindowsFormsApp1
             catch (SqlException e)
             {
                 Console.WriteLine(e.ToString());
-                return "erro";
+                return false;
             }
         }
         public static void deletaReserva(string cpf)

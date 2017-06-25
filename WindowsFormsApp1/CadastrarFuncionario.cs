@@ -54,5 +54,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void textSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
