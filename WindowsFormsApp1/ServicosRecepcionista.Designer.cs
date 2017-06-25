@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.checkboxReserva = new System.Windows.Forms.CheckBox();
             this.checkboxCancelar = new System.Windows.Forms.CheckBox();
-            this.textCPF_cancelado = new System.Windows.Forms.TextBox();
+            this.textLogincliente = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkboxCheckin = new System.Windows.Forms.CheckBox();
             this.checkboxCheckout = new System.Windows.Forms.CheckBox();
@@ -46,53 +44,28 @@
             this.textEntrada = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textEmail = new System.Windows.Forms.TextBox();
+            this.textSenha = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textAno = new System.Windows.Forms.TextBox();
+            this.textLogin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textNome = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textCPF = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textSenhacliente = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.Enabled = false;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "102",
-            "105",
-            "106",
-            "201",
-            "204",
-            "207",
-            "301",
-            "308"});
-            this.checkedListBox1.Location = new System.Drawing.Point(4, 62);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(183, 124);
-            this.checkedListBox1.Sorted = true;
-            this.checkedListBox1.TabIndex = 5;
-            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Quartos Vagos:";
-            // 
             // checkboxReserva
             // 
             this.checkboxReserva.AutoSize = true;
-            this.checkboxReserva.Location = new System.Drawing.Point(4, 24);
+            this.checkboxReserva.Location = new System.Drawing.Point(37, 175);
             this.checkboxReserva.Name = "checkboxReserva";
             this.checkboxReserva.Size = new System.Drawing.Size(95, 17);
             this.checkboxReserva.TabIndex = 6;
@@ -103,7 +76,7 @@
             // checkboxCancelar
             // 
             this.checkboxCancelar.AutoSize = true;
-            this.checkboxCancelar.Location = new System.Drawing.Point(31, 19);
+            this.checkboxCancelar.Location = new System.Drawing.Point(108, 19);
             this.checkboxCancelar.Name = "checkboxCancelar";
             this.checkboxCancelar.Size = new System.Drawing.Size(111, 17);
             this.checkboxCancelar.TabIndex = 9;
@@ -111,27 +84,28 @@
             this.checkboxCancelar.UseVisualStyleBackColor = true;
             this.checkboxCancelar.CheckedChanged += new System.EventHandler(this.checkboxCancelar_CheckedChanged);
             // 
-            // textCPF_cancelado
+            // textLogincliente
             // 
-            this.textCPF_cancelado.Enabled = false;
-            this.textCPF_cancelado.Location = new System.Drawing.Point(119, 91);
-            this.textCPF_cancelado.Name = "textCPF_cancelado";
-            this.textCPF_cancelado.Size = new System.Drawing.Size(100, 20);
-            this.textCPF_cancelado.TabIndex = 10;
+            this.textLogincliente.Enabled = false;
+            this.textLogincliente.Location = new System.Drawing.Point(108, 65);
+            this.textLogincliente.Name = "textLogincliente";
+            this.textLogincliente.Size = new System.Drawing.Size(174, 20);
+            this.textLogincliente.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 94);
+            this.label3.Location = new System.Drawing.Point(12, 98);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "CPF do Cliente:";
+            this.label3.Text = "Senha do cliente:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // checkboxCheckin
             // 
             this.checkboxCheckin.AutoSize = true;
-            this.checkboxCheckin.Location = new System.Drawing.Point(31, 40);
+            this.checkboxCheckin.Location = new System.Drawing.Point(456, 37);
             this.checkboxCheckin.Name = "checkboxCheckin";
             this.checkboxCheckin.Size = new System.Drawing.Size(68, 17);
             this.checkboxCheckin.TabIndex = 14;
@@ -142,7 +116,7 @@
             // checkboxCheckout
             // 
             this.checkboxCheckout.AutoSize = true;
-            this.checkboxCheckout.Location = new System.Drawing.Point(31, 63);
+            this.checkboxCheckout.Location = new System.Drawing.Point(358, 37);
             this.checkboxCheckout.Name = "checkboxCheckout";
             this.checkboxCheckout.Size = new System.Drawing.Size(75, 17);
             this.checkboxCheckout.TabIndex = 17;
@@ -170,20 +144,18 @@
             this.groupBox1.Controls.Add(this.textEntrada);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textEmail);
+            this.groupBox1.Controls.Add(this.textSenha);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textAno);
+            this.groupBox1.Controls.Add(this.textLogin);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.textNome);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Controls.Add(this.textCPF);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.checkboxReserva);
-            this.groupBox1.Location = new System.Drawing.Point(40, 59);
+            this.groupBox1.Location = new System.Drawing.Point(40, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(652, 324);
+            this.groupBox1.Size = new System.Drawing.Size(652, 320);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Reservar";
@@ -191,7 +163,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(271, 295);
+            this.button1.Location = new System.Drawing.Point(281, 292);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 32;
@@ -257,22 +229,22 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(257, 231);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 30;
-            this.label11.Text = "Email:";
+            this.label11.Text = "Senha:";
             // 
-            // textEmail
+            // textSenha
             // 
-            this.textEmail.Enabled = false;
-            this.textEmail.Location = new System.Drawing.Point(358, 227);
-            this.textEmail.Name = "textEmail";
-            this.textEmail.Size = new System.Drawing.Size(273, 20);
-            this.textEmail.TabIndex = 27;
+            this.textSenha.Enabled = false;
+            this.textSenha.Location = new System.Drawing.Point(358, 227);
+            this.textSenha.Name = "textSenha";
+            this.textSenha.Size = new System.Drawing.Size(273, 20);
+            this.textSenha.TabIndex = 27;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(355, 24);
+            this.label10.Location = new System.Drawing.Point(355, 44);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 13);
             this.label10.TabIndex = 28;
@@ -283,18 +255,18 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(257, 182);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(34, 13);
+            this.label9.Size = new System.Drawing.Size(36, 13);
             this.label9.TabIndex = 27;
-            this.label9.Text = "Idade";
+            this.label9.Text = "Login:";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // textAno
+            // textLogin
             // 
-            this.textAno.Enabled = false;
-            this.textAno.Location = new System.Drawing.Point(358, 175);
-            this.textAno.Name = "textAno";
-            this.textAno.Size = new System.Drawing.Size(273, 20);
-            this.textAno.TabIndex = 26;
+            this.textLogin.Enabled = false;
+            this.textLogin.Location = new System.Drawing.Point(358, 179);
+            this.textLogin.Name = "textLogin";
+            this.textLogin.Size = new System.Drawing.Size(273, 20);
+            this.textLogin.TabIndex = 26;
             // 
             // label8
             // 
@@ -326,35 +298,75 @@
             // textCPF
             // 
             this.textCPF.Enabled = false;
-            this.textCPF.Location = new System.Drawing.Point(358, 126);
+            this.textCPF.Location = new System.Drawing.Point(358, 130);
             this.textCPF.Name = "textCPF";
             this.textCPF.Size = new System.Drawing.Size(273, 20);
             this.textCPF.TabIndex = 25;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.textSenhacliente);
+            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.checkboxCancelar);
-            this.groupBox2.Controls.Add(this.textCPF_cancelado);
+            this.groupBox2.Controls.Add(this.textLogincliente);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.checkboxCheckin);
             this.groupBox2.Controls.Add(this.checkboxCheckout);
             this.groupBox2.Location = new System.Drawing.Point(40, 408);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(320, 167);
+            this.groupBox2.Size = new System.Drawing.Size(652, 167);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cancelar";
+            this.groupBox2.Text = "Operações";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(112, 128);
+            this.button2.Location = new System.Drawing.Point(281, 124);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 33;
             this.button2.Text = "Enviar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(12, 68);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "Login do cliente:";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // textSenhacliente
+            // 
+            this.textSenhacliente.Enabled = false;
+            this.textSenhacliente.Location = new System.Drawing.Point(108, 91);
+            this.textSenhacliente.Name = "textSenhacliente";
+            this.textSenhacliente.Size = new System.Drawing.Size(174, 20);
+            this.textSenhacliente.TabIndex = 35;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(456, 69);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(174, 20);
+            this.textBox1.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(355, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Numero do quarto:";
             // 
             // ServicosRecepcionista
             // 
@@ -379,12 +391,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox checkboxReserva;
         private System.Windows.Forms.CheckBox checkboxCancelar;
-        private System.Windows.Forms.TextBox textCPF_cancelado;
+        private System.Windows.Forms.TextBox textLogincliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkboxCheckin;
         private System.Windows.Forms.CheckBox checkboxCheckout;
@@ -392,13 +401,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textAno;
+        private System.Windows.Forms.TextBox textLogin;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textNome;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textCPF;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textEmail;
+        private System.Windows.Forms.TextBox textSenha;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
@@ -408,5 +417,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textPessoas;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textSenhacliente;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

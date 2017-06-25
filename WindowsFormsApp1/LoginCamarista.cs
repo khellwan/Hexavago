@@ -23,7 +23,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Login inválido. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (textSenha.Text == "")
                 MessageBox.Show("Senha inválida. ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if(true) //if (string.IsNullOrEmpty(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "camarista")))
+            else if(BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "camarista"))
             {
                 ServicosCamarista cf = new ServicosCamarista();
                 cf.Show();

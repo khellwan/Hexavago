@@ -28,7 +28,7 @@ namespace WindowsFormsApp1
                 MessageBox.Show("Preencha o campo da senha ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("semsenha");
             }
-            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "Funcionario"))
+            else if (BancoDados.efetuarLogin(textLogin.Text, textSenha.Text, "administrador"))
             {
                 Console.WriteLine("login deu boa");
                 CadastrarFuncionario cf = new CadastrarFuncionario();

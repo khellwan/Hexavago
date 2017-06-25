@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
 
         private void ServicosRecepcionista_Load(object sender, EventArgs e)
         {
-            textCPF_cancelado.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -45,11 +45,13 @@ namespace WindowsFormsApp1
                 checkboxCheckin.Checked = false;
                 checkboxCheckout.Checked = false;
             }
-            checkedListBox1.Enabled = checkboxReserva.Checked;
             textNome.Enabled = checkboxReserva.Checked;
-            textAno.Enabled = checkboxReserva.Checked;
-            textEmail.Enabled = checkboxReserva.Checked;
+            textLogin.Enabled = checkboxReserva.Checked;
+            textSenha.Enabled = checkboxReserva.Checked;
             textCPF.Enabled = checkboxReserva.Checked;
+            textEntrada.Enabled = checkboxReserva.Checked;
+            textSaida.Enabled = checkboxReserva.Checked;
+            textPessoas.Enabled = checkboxReserva.Checked;
         }
 
         private void checkboxCancelar_CheckedChanged(object sender, EventArgs e)
@@ -60,7 +62,7 @@ namespace WindowsFormsApp1
                 checkboxCheckin.Checked = false;
                 checkboxCheckout.Checked = false;
             }
-            textCPF_cancelado.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
         private void checkboxCheckin_CheckedChanged(object sender, EventArgs e)
         {
@@ -70,7 +72,7 @@ namespace WindowsFormsApp1
                 checkboxReserva.Checked = false;
                 checkboxCheckout.Checked = false;
             }
-            textCPF_cancelado.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
         private void checkboxCheckout_CheckedChanged(object sender, EventArgs e)
         {
@@ -80,7 +82,7 @@ namespace WindowsFormsApp1
                 checkboxCheckin.Checked = false;
                 checkboxReserva.Checked = false;
             }
-            textCPF_cancelado.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,22 +93,19 @@ namespace WindowsFormsApp1
         {
             try
             {
-                if ((checkboxReserva.Checked) && (checkedListBox1.CheckedItems.Count > 0))
+                if (checkboxReserva.Checked)
                 {
                     //Hospede h1 = new Hospede(textNome.Text, textCPF.Text, textAno.Text, textEmail.Text, Convert.ToInt32(textAno.Text))
 
                     Random rnd = new Random();
                     int id_reserva = rnd.Next(0, 2147483647);
+                    //int id_reserva = 12345;
                     BancoDados.criaReserva(id_reserva.ToString() , textEntrada.Text, textSaida.Text, Convert.ToInt32(textPessoas.Text));
-                    BancoDados.criaHospede(id_reserva.ToString(), textNome.Text, textCPF.Text, Convert.ToInt32(textAno.Text) ,  textEmail.Text);
+
+                    BancoDados.criaHospede(id_reserva.ToString(), textNome.Text, textCPF.Text, textLogin.Text ,  textSenha.Text);
+
                     MessageBox.Show("Reserva realizada!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if ((checkboxCancelar.Checked) && (textCPF_cancelado.Text != ""))
-                    MessageBox.Show("Cancelamento realizado!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else if ((checkboxCheckin.Checked) && (textCPF_cancelado.Text != ""))
-                    MessageBox.Show("Check-in realizado!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else if ((checkboxCheckout.Checked) && (textCPF_cancelado.Text != ""))
-                    MessageBox.Show("Check-out realizado!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("Existem campos incompletos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -140,12 +139,54 @@ namespace WindowsFormsApp1
         {
             try
             {
-                BancoDados.deletaReserva(textCPF_cancelado.Text);
+                string mensagem;
+                if (checkboxCheckin.Checked)
+                {
+                    string quarto = BancoDados.checkIn(textLogincliente.Text);
+                    if (quarto == "vazio")
+                    {
+                        mensagem = "O hospede de CPF " + textCPF + " Fez checkin no quarto " + quarto;
+                    }
+
+                }
+                if (checkboxCheckout.Checked)
+                {
+                    BancoDados.deletaReserva(textLogincliente.Text);
+                    mensagem = "O hospede de CPF " + textCPF + "Fez checkout";
+                }
+                if (checkboxCancelar.Checked)
+                {
+                    BancoDados.deletaReserva(textLogincliente.Text);
+                    mensagem = "O hospede de CPF " + textCPF + "Cancelou sua reserva";
+                }
+                else
+                {
+                    BancoDados.deletaReserva(textLogincliente.Text);
+                    mensagem = "Clique em uma das opções";
+                }
+                textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+                
+                MessageBox.Show("lol", mensagem , MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro ao deletar o barou", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Erro ao deletar o hospede", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
