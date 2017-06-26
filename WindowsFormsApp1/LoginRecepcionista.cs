@@ -60,5 +60,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void textSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+//            if key.
+        }
     }
 }

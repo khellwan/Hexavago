@@ -83,6 +83,7 @@
             this.textSenha.Size = new System.Drawing.Size(100, 20);
             this.textSenha.TabIndex = 2;
             this.textSenha.TextChanged += new System.EventHandler(this.textSenha_TextChanged);
+            this.textSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textSenha_KeyPress);
             // 
             // button1
             // 

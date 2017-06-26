@@ -17,11 +17,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -29,7 +24,9 @@ namespace WindowsFormsApp1
 
         private void ServicosRecepcionista_Load(object sender, EventArgs e)
         {
-            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textNumeroQuarto.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+            listQuartos.Items.AddRange(quartosVagos.ToArray());
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -46,12 +43,21 @@ namespace WindowsFormsApp1
                 checkboxCheckout.Checked = false;
             }
             textNome.Enabled = checkboxReserva.Checked;
+            textPessoas.Enabled = checkboxReserva.Checked;
             textLogin.Enabled = checkboxReserva.Checked;
             textSenha.Enabled = checkboxReserva.Checked;
+            textSexo.Enabled = checkboxReserva.Checked;
             textCPF.Enabled = checkboxReserva.Checked;
             textEntrada.Enabled = checkboxReserva.Checked;
             textSaida.Enabled = checkboxReserva.Checked;
-            textPessoas.Enabled = checkboxReserva.Checked;
+            textEmail.Enabled = checkboxReserva.Checked;
+            textIdade.Enabled = checkboxReserva.Checked;
+            textTelefone.Enabled = checkboxReserva.Checked;
+            textEndereco.Enabled = checkboxReserva.Checked;
+            textCEP.Enabled = checkboxReserva.Checked;
+            textCidade.Enabled = checkboxReserva.Checked;
+            textEstado.Enabled = checkboxReserva.Checked;
+            listQuartos.Enabled = checkboxReserva.Checked;
         }
 
         private void checkboxCancelar_CheckedChanged(object sender, EventArgs e)
@@ -62,7 +68,7 @@ namespace WindowsFormsApp1
                 checkboxCheckin.Checked = false;
                 checkboxCheckout.Checked = false;
             }
-            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textNumeroQuarto.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
         private void checkboxCheckin_CheckedChanged(object sender, EventArgs e)
         {
@@ -72,7 +78,7 @@ namespace WindowsFormsApp1
                 checkboxReserva.Checked = false;
                 checkboxCheckout.Checked = false;
             }
-            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textNumeroQuarto.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
         }
         private void checkboxCheckout_CheckedChanged(object sender, EventArgs e)
         {
@@ -82,7 +88,8 @@ namespace WindowsFormsApp1
                 checkboxCheckin.Checked = false;
                 checkboxReserva.Checked = false;
             }
-            textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textNumeroQuarto.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+            textHospede.Enabled = checkboxCheckout.Checked;
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -100,14 +107,16 @@ namespace WindowsFormsApp1
                     Random rnd = new Random();
                     int id_reserva = rnd.Next(0, 2147483647);
                     //int id_reserva = 12345;
-                    BancoDados.criaReserva(id_reserva.ToString() , textEntrada.Text, textSaida.Text, Convert.ToInt32(textPessoas.Text));
+                    BancoDados.criaReserva(id_reserva.ToString(), textEntrada.Text, textSaida.Text, Convert.ToInt32(textPessoas.Text), Convert.ToInt32(listQuartos.SelectedItem));
 
-                    BancoDados.criaHospede(id_reserva.ToString(), textNome.Text, textCPF.Text, textLogin.Text ,  textSenha.Text);
+                    BancoDados.criaHospede(id_reserva.ToString(), textNome.Text, textCPF.Text, textLogin.Text,  textSenha.Text, textSexo.Text, textEmail.Text, Convert.ToInt32(textIdade.Text), textTelefone.Text, textEndereco.Text, textCEP.Text, textCidade.Text, textEstado.Text);
 
                     MessageBox.Show("Reserva realizada!", "Pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+                    listQuartos.Items.AddRange(quartosVagos.ToArray());
                 }
                 else
-                    MessageBox.Show("Existem campos incompletos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Existem campos obrigatórios não preenchidos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch(Exception ex)
             {
@@ -140,37 +149,41 @@ namespace WindowsFormsApp1
             try
             {
                 string mensagem;
+                mensagem = "OK!";
                 if (checkboxCheckin.Checked)
                 {
-                    string quarto = BancoDados.checkIn(textLogincliente.Text);
-                    if (quarto == "vazio")
-                    {
-                        mensagem = "O hospede de CPF " + textCPF + " Fez checkin no quarto " + quarto;
-                    }
-
+                    string quarto = BancoDados.checkIn(Int32.Parse(textNumeroQuarto.Text));
+                    mensagem = "O hospede fez checkin no quarto " + quarto;
+                    List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+                    listQuartos.Items.AddRange(quartosVagos.ToArray());
                 }
-                if (checkboxCheckout.Checked)
+                else if (checkboxCheckout.Checked)
                 {
-                    BancoDados.deletaReserva(textLogincliente.Text);
-                    mensagem = "O hospede de CPF " + textCPF + "Fez checkout";
+                    mensagem = "O hospede Fez checkout";
+                    BancoDados.checkOut(Int32.Parse(textNumeroQuarto.Text));
+                    List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+                    listQuartos.Items.AddRange(quartosVagos.ToArray());
                 }
-                if (checkboxCancelar.Checked)
+                else if (checkboxCancelar.Checked)
                 {
-                    BancoDados.deletaReserva(textLogincliente.Text);
-                    mensagem = "O hospede de CPF " + textCPF + "Cancelou sua reserva";
+                    BancoDados.deletaReserva(Int32.Parse(textNumeroQuarto.Text));
+                    mensagem = "O hospede cancelou sua reserva";
+                    List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+                    listQuartos.Items.AddRange(quartosVagos.ToArray());
                 }
                 else
                 {
-                    BancoDados.deletaReserva(textLogincliente.Text);
                     mensagem = "Clique em uma das opções";
+                    List<string> quartosVagos = BancoDados.carregaQuartosVagos();
+                    listQuartos.Items.AddRange(quartosVagos.ToArray());
                 }
-                textLogincliente.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
+                textNumeroQuarto.Enabled = (checkboxCheckin.Checked || checkboxCancelar.Checked || checkboxCheckout.Checked);
                 
-                MessageBox.Show("lol", mensagem , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensagem, "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro ao deletar o hospede", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Número de quarto inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -185,6 +198,26 @@ namespace WindowsFormsApp1
         }
 
         private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listQuartos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
         {
 
         }
